@@ -1,0 +1,25 @@
+{
+  "name": "react-instafeed",
+  "version": "0.0.1",
+  "description": "Instafeed.js component for React",
+  "author": {
+    "name": "Jerome Fitzgerald",
+    "email": "j@jeromefitzgerald.com",
+    "url": "http://jeromefitzgerald.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JeromeFitz/react-instafeed.git"
+  },
+  "keywords": [
+    "instafeed",
+    "react"
+  ],
+  "dependencies": {
+    "instafeed.js": "~1.4.1",
+    "react": "~15.3.0"
+  },
+  "devDependencies": {
+  }
+}
