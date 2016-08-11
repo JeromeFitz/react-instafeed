@@ -3,7 +3,7 @@ React implementation of [Instafeed.js](http://instafeedjs.com/)
 
 _Instafeed.js is a dead-simple way to add Instagram photos to your website. No jQuery required, just plain 'ol javascript._
 
-This is a wrapped for [React](https://facebook.github.io/react/)
+This is a wrapper for [React](https://facebook.github.io/react/)
 
 #### Install:
 
@@ -57,6 +57,8 @@ module.exports = React.createClass({
 ```
 
 You can set your variables directly in your component.
+
+**TODO:** Have the Template View be one level higher, and have it be a string acceptance in the props.
 
 **TODO:** Allow for environment variables to populate authentication information
 *This would probably remove them from the variables, and instead __if__ someone used an authentication variable it would overrwite the default which would be an ENV*
