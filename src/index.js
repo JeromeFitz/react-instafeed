@@ -1,17 +1,7 @@
 import React, { Component } from 'react';
 import Instafeed from 'instafeed.js';
 
-export default class ReactInstafeed extends Component {
-
-  static propTypes = {
-    userId: React.PropTypes.string,
-    clientId: React.PropTypes.string,
-    accessToken: React.PropTypes.string,
-    target: React.PropTypes.string,
-    resolution: React.PropTypes.string,
-    limit: React.PropTypes.string,
-    template: React.PropTypes.string
-  }
+export default class InstafeedComponent extends Component {
 
   render() {
     const instafeed = new Instafeed({
@@ -50,4 +40,14 @@ export default class ReactInstafeed extends Component {
       <div id={instafeed.target} />
     )
   }
+}
+
+InstafeedComponent.propTypes = {
+  userId: React.PropTypes.string,
+  clientId: React.PropTypes.string,
+  accessToken: React.PropTypes.string,
+  target: React.PropTypes.string,
+  resolution: React.PropTypes.string,
+  limit: React.PropTypes.string,
+  template: React.PropTypes.string
 }

@@ -1,4 +1,2 @@
-.npm-debug
-build
-components
+dist
 node_modules
