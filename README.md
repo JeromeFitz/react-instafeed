@@ -17,8 +17,6 @@ npm install react-instafeed --save
 yarn add react-instafeed
 ```
 
-😬️ - This isn't an NPM Module yet, though.
-
 ## Usage:
 
 ### Resolutions
