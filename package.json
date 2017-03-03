@@ -1,6 +1,6 @@
 {
   "name": "react-instafeed",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Instafeed.js component for React",
   "author": {
     "name": "Jerome Fitzgerald",
@@ -19,15 +19,26 @@
   "main": "./dist/index.js",
   "scripts": {
     "build": "babel src --out-dir dist",
+    "lint": "eslint -c .eslintrc ./src",
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "instafeed.js": "^1.4.1",
-    "react": "^15.3.2"
+    "instafeed.js": "1.4.1",
+    "react": "^15.4.2"
   },
   "devDependencies": {
-    "babel-cli": "6",
+    "babel-cli": "6.23.0",
+    "babel-eslint": "7.1.1",
     "babel-preset-es2015": "6",
-    "babel-preset-react": "6"
+    "babel-preset-react": "6.23.0",
+    "eslint": "3.16.1",
+    "eslint-config-react-app": "0.5.2",
+    "eslint-plugin-flowtype": "2.30.0",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "4.0.0",
+    "eslint-plugin-react": "6.10.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }
