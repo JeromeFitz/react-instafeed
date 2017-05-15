@@ -28,25 +28,37 @@ import Instafeed from 'react-instafeed';
 ```javascript
 
   <Instafeed
+    limit='5'
+    ref='instafeed'
+    resolution='standard_resolution'
+    sortBy='most-recent'
+    target='instafeed'
+    template=''
     userId='userIdInstagramApiString'
     clientId='clientIdInstagramApiString'
     accessToken='accessTokenInstagramApiString'
-    target='instafeed'
-    resolution='standard_resolution'
-    limit='5'
-    sortBy='most-recent'
-    ref='instafeed'
-    template=''
     />
 ```
 
-### 📓️ Notes:
-#### Resolutions
-- `thumbnail`
-- `low_resolution`
-- `standard_resolution`
+### 📓️ Notes (mostly from `instafeedjs.com`):
 
-#### Template
+- `limit` - Maximum number of Images to add.
+- `resolution` -  Size of the images to get. Available options are:
+- - `thumbnail` (default) - 150x150
+- - `low_resolution` - 306x306
+- - `standard_resolution` - 612x612
+- `sortBy` - Sort the images in a set order. Available options are:
+- - `none` (default) - As they come from Instagram.
+- - `most-recent` - Newest to oldest.
+- - `least-recent` - Oldest to newest.
+- - `most-liked` - Highest # of likes to lowest.
+- - `least-liked` - Lowest # likes to highest.
+- - `most-commented` - Highest # of comments to lowest.
+- - `least-commented` - Lowest # of comments to highest.
+- - `random` - Random order.
+- `target` - The ID of a DOM element you want to add the images to.
+- `template` - Custom HTML template to use for images.
+
 In `template` do not use className (React), HTML standards apply.
 Default (if nothing is passed):
 ```html
@@ -61,7 +73,14 @@ Default (if nothing is passed):
     </div>
 </a>`
 ```
-#### Variables
+#### Further Documentation
+http://instafeedjs.com/
+https://github.com/stevenschobert/instafeed.js
+
+As well as a breakdown of some advanced functionality in this issue:
+https://github.com/stevenschobert/instafeed.js/issues/21
+
+#### API
 `instafeed.js` is client facing library, so your API Keys and the like kind of need to be in the code to work. If there is a more secure way of doing this, please submit an Issue / Pull Request / etc.
 
 These are set explicitly in this example, however, in my usual build process I have been using: [babel-plugin-transform-define](https://github.com/FormidableLabs/babel-plugin-transform-define):
