@@ -26,18 +26,20 @@ import Instafeed from 'react-instafeed';
 ```
 ### Render
 ```javascript
-
-  <Instafeed
-    limit='5'
-    ref='instafeed'
-    resolution='standard_resolution'
-    sortBy='most-recent'
-    target='instafeed'
-    template=''
-    userId='userIdInstagramApiString'
-    clientId='clientIdInstagramApiString'
-    accessToken='accessTokenInstagramApiString'
-    />
+  const instafeedTarget = 'instafeed';
+    <div id={instafeedTarget}>
+      <Instafeed
+        limit='5'
+        ref='instafeed'
+        resolution='standard_resolution'
+        sortBy='most-recent'
+        target={instafeedTarget}
+        template=''
+        userId='userIdInstagramApiString'
+        clientId='clientIdInstagramApiString'
+        accessToken='accessTokenInstagramApiString'
+        />
+    </div>
 ```
 
 ### 📓️ Notes (mostly from `instafeedjs.com`):
@@ -57,6 +59,7 @@ import Instafeed from 'react-instafeed';
 - - `least-commented` - Lowest # of comments to highest.
 - - `random` - Random order.
 - `target` - The ID of a DOM element you want to add the images to.
+- - This can be to whatever you via `instafeedTarget`
 - `template` - Custom HTML template to use for images.
 
 In `template` do not use className (React), HTML standards apply.
