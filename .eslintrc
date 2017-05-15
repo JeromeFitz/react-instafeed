@@ -28,7 +28,7 @@
     "import/newline-after-import": 0,
     "import/no-extraneous-dependencies": 0,
     "import/extensions": 0,
-    "comma-dangle": 0,  // not sure why airbnb turned this on. gross!
+    "comma-dangle": 0,
     "indent": [2, 2, {"SwitchCase": 1}],
     "no-console": 0,
     "no-alert": 0,
@@ -38,7 +38,8 @@
     "jsx-quotes": [0, "prefer-single"],
     "no-prototype-builtins": 0,
     "class-methods-use-this": 0,
-    "no-useless-escape": 1
+    "no-useless-escape": 1,
+    "jsx-a11y/img-has-alt": 0,
   },
   "plugins": [
     "react", "import"
