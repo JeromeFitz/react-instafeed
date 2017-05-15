@@ -27,6 +27,7 @@ import Instafeed from 'react-instafeed';
 ### Render
 ```javascript
   const instafeedTarget = 'instafeed';
+  return (
     <div id={instafeedTarget}>
       <Instafeed
         limit='5'
@@ -38,8 +39,9 @@ import Instafeed from 'react-instafeed';
         userId='userIdInstagramApiString'
         clientId='clientIdInstagramApiString'
         accessToken='accessTokenInstagramApiString'
-        />
+      />
     </div>
+  )
 ```
 
 ### 📓️ Notes (mostly from `instafeedjs.com`):
