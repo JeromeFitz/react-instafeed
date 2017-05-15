@@ -76,7 +76,9 @@ export default class InstafeedComponent extends Component {
 
   render() {
     return (
-      {this.renderInstafeed()}
+      <div id='instafeed'>
+        {this.renderInstafeed()}
+      </div>
     )
   }
 }  
