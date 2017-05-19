@@ -88,7 +88,7 @@ https://github.com/stevenschobert/instafeed.js/issues/21
 #### API
 `instafeed.js` is client facing library, so your API Keys and the like kind of need to be in the code to work. If there is a more secure way of doing this, please submit an Issue / Pull Request / etc.
 
-These are set explicitly in this example, however, in my usual build process I have been using: [babel-plugin-transform-define](https://github.com/FormidableLabs/babel-plugin-transform-define):
+These are set explicitly in this example, however, in my usual build process I have been using [babel-plugin-transform-define](https://github.com/FormidableLabs/babel-plugin-transform-define).
 
 **Before:**
 ```javascript
@@ -105,10 +105,19 @@ clientId={`${INSTAGRAM_CLIENT_ID}`} // eslint-disable-line no-undef
 accessToken={`${INSTAGRAM_ACCESS_TOKEN}`} // eslint-disable-line no-undef
 ```
 
+If you are using [react-scripts](https://github.com/facebookincubator/create-react-app/tree/master/packages/react-scripts), add your keys to your `.env` file with the `REACT_APP_` precursor:
+
+```javascript
+
+userId={`${process.env.REACT_APP_INSTAGRAM_USER_ID}`}
+clientId={`${process.env.REACT_APP_INSTAGRAM_CLIENT_ID}`}
+accessToken={`${process.env.REACT_APP_INSTAGRAM_ACCESS_TOKEN}`}
+```
+
 FYI: Technically your API Keys are not in your Repo, however, they will still absolutely be in your end build javascript.
 
 ## 🙌 Props
-Super props to the React, Instafeed, and Instagram teams️.
+Super props to the React, Instafeed, and Instagram teams.
 
 ## ❤️ "Legal"
 This software is provided as-is, and all that usually lovely stuff.
