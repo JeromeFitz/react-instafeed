@@ -1,6 +1,6 @@
 {
   "name": "react-instafeed",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Instafeed.js component for React",
   "author": {
     "name": "Jerome Fitzgerald",
@@ -20,7 +20,7 @@
   "scripts": {
     "build": "babel src --out-dir dist",
     "lint": "eslint -c .eslintrc ./src",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "dependencies": {
     "instafeed.js": "1.4.1",
