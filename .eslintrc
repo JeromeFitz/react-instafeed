@@ -1,3 +1,4 @@
+# 0 = off, 1 = warn, 2 = error
 {
   "extends": ["react-app"],
   "env": {
@@ -15,10 +16,11 @@
   },
   "rules": {
     "default-case": 0,
-    "react/no-multi-comp": 0,
-    "react/prefer-stateless-function": 0,
-    "react/jsx-filename-extension": 0,
-    "react/forbid-prop-types": 0,
+    "react/no-multi-comp": "off",
+    "react/prefer-stateless-function": "off",
+    "react/jsx-filename-extension": "off",
+    "react/forbid-prop-types": "off",
+    "react/react-in-jsx-scope": "off",
     "import/default": 0,
     "import/no-duplicates": 0,
     "import/named": 0,
@@ -29,17 +31,29 @@
     "import/no-extraneous-dependencies": 0,
     "import/extensions": 0,
     "comma-dangle": 0,
-    "indent": [2, 2, {"SwitchCase": 1}],
+    "indent": ["error", 2, {
+      "SwitchCase": 1,
+      "VariableDeclarator": {"var": 2, "let": 2, "const": 3},
+      "MemberExpression": 1,
+      "ObjectExpression": 1,
+    }],
     "no-console": 0,
     "no-alert": 0,
     "strict": 0,
     "arrow-body-style": [1, "as-needed"],
     "no-confusing-arrow": [2, {"allowParens": true}],
-    "jsx-quotes": [0, "prefer-single"],
+    "jsx-quotes": [1, "prefer-single"],
     "no-prototype-builtins": 0,
     "class-methods-use-this": 0,
     "no-useless-escape": 1,
     "jsx-a11y/img-has-alt": 0,
+    "jsx-a11y/alt-text": 0,
+    "jsx-a11y/href-no-hash": 0,
+    "jsx-a11y/anchor-is-valid": [ 0, {
+      "components": [ "Link" ],
+      "specialLink": [ "hrefLeft", "hrefRight" ],
+      "aspects": [ "noHref", "invalidHref", "preferButton" ]
+    }]
   },
   "plugins": [
     "react", "import"
