@@ -1,4 +1,3 @@
-[![Greenkeeper badge](https://badges.greenkeeper.io/JeromeFitz/react-instafeed.svg)](https://greenkeeper.io/)
 [![Build Status](https://img.shields.io/travis/JeromeFitz/react-instafeed/master.svg)](https://travis-ci.org/JeromeFitz/react-instafeed)
 [![NPM version](https://img.shields.io/npm/v/react-instafeed.svg)](https://www.npmjs.org/package/react-instafeed)
 
