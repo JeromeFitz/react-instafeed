@@ -33,7 +33,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.1.1",
-    "eslint-config-react-app": "^1.0.5",
+    "eslint-config-react-app": "^2.0.0",
     "eslint-plugin-flowtype": "^2.33.0",
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
