@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import {string} from 'prop-types';
 import Instafeed from 'instafeed.js';
 
 class InstafeedComponent extends Component {
@@ -44,13 +44,13 @@ class InstafeedComponent extends Component {
 }
 
 InstafeedComponent.propTypes = {
-  userId: PropTypes.string,
-  clientId: PropTypes.string,
-  accessToken: PropTypes.string,
-  target: PropTypes.string,
-  resolution: PropTypes.string,
-  limit: PropTypes.string,
-  template: PropTypes.string
+  userId: string,
+  clientId: string,
+  accessToken: string,
+  target: string,
+  resolution: string,
+  limit: string,
+  template: string
 }
 
 export default InstafeedComponent;
