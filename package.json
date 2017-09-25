@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "instafeed.js": "1.4.1",
-    "prop-types": "15.5.10",
+    "prop-types": "15.6.0",
     "react": "15.6.1"
   },
   "devDependencies": {
