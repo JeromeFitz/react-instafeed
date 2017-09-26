@@ -25,7 +25,7 @@
   "dependencies": {
     "instafeed.js": "1.4.1",
     "prop-types": "15.5.10",
-    "react": "15.6.1"
+    "react": "15.6.2"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
