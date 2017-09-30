@@ -9,16 +9,15 @@
 
 ## 👩‍💻️ Install:
 
+### Beta
+```shell
+
+npm install react-instafeed@beta --save
+```
+### Stable
 ```shell
 
 npm install react-instafeed --save
-```
-
-*... or*
-
-```shell
-
-yarn add react-instafeed
 ```
 
 ## 🔑 Usage:
@@ -26,11 +25,11 @@ yarn add react-instafeed
 ### Import
 ```javascript
 
-import Instafeed from 'react-instafeed';
+import Instafeed from 'react-instafeed'
 ```
 ### Render
 ```javascript
-  const instafeedTarget = 'instafeed';
+  const instafeedTarget = 'instafeed'
   return (
     <div id={instafeedTarget}>
       <Instafeed
@@ -50,6 +49,8 @@ import Instafeed from 'react-instafeed';
 
 ### 📓️ Notes (mostly from `instafeedjs.com`):
 
+#### Variables
+
 - `limit` - Maximum number of Images to add.
 - `resolution` -  Size of the images to get. Available options are:
 - - `thumbnail` (default) - 150x150
@@ -68,20 +69,41 @@ import Instafeed from 'react-instafeed';
 - - This can be to whatever you via `instafeedTarget`
 - `template` - Custom HTML template to use for images.
 
+#### Variable Defaults
+If you just passed this... **TBD: We shouldn't have to double wrap this component.***
+
+#### Template
+
 In `template` do not use className (React), HTML standards apply.
+
 Default (if nothing is passed):
 ```html
 
-`<a href='{{link}}' target='_blank' class='instafeed__item'>
-  <img class='instafeed__item__background' src='{{image}}' />
-    <div class='instafeed__item__overlay'>
-      <div class='instafeed__item__overlay--inner'>
-        <p class='instafeed__item__caption'>{{model.short_caption}}</p>
-        <p class='instafeed__item__location'>{{location}}</p>
-      </div>
-    </div>
-</a>`
+'<a href="{{link}}" target="_blank" class="instafeed__item">' +
+  '<img class="instafeed__item__background" src="{{image}}" />' +
+  '<div class="instafeed__item__overlay">' +
+    '<div class="instafeed__item__overlay--inner">' +
+      '<p class="instafeed__item__caption">{{model.short_caption}}</p>' +
+      '<p class="instafeed__item__location">{{location}}</p>' +
+    '</div>' +
+  '</div>' +
+'</a>'
 ```
+
+##### Template Attributes
+- model (image)
+- id (image.id)
+- link (image.link)
+- type (image.type)
+- image (imageUrl)
+- width (imgWidth)
+- height (imgHeight)
+- orientation (imgOrient)
+- caption (image.caption.text)
+- likes (image.likes.count)
+- comments (image.comments.count)
+- location (image.location.name)
+
 #### Further Documentation
 http://instafeedjs.com/
 https://github.com/stevenschobert/instafeed.js
