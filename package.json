@@ -1,72 +1,73 @@
 {
   "name": "react-instafeed",
   "version": "1.0.0-beta.1",
-  "description": "Instafeed.js component for React",
+  "description": "Instagram Component for React inspired by Instafeed.js",
   "license": "MIT",
   "author": {
     "name": "Jerome Fitzgerald",
     "email": "j@jeromefitzgerald.com",
     "url": "https://jeromefitzgerald.com"
   },
+  "contributors": [
+    {
+      "name": "Casey Baggz",
+      "email": "caseybaggz@gmail.com",
+      "url": "http://caseybaggz.com/#/"
+    }
+  ],
   "bugs": "https://github.com/JeromeFitz/react-instafeed/issues",
   "repository": "https://github.com/JeromeFitz/react-instafeed",
   "keywords": [
-    "instafeed",
-    "react"
+    "instagram",
+    "instafeed"
   ],
   "main": "./dist/index.js",
   "scripts": {
-    "build": "BABEL_ENV=production babel src --out-dir dist",
-    "build:lib": "babel src --out-dir lib",
-    "build:standard": "prettier-standard \"./src/*.js\" && babel src --out-dir lib",
-    "lint": "eslint -c .eslintrc ./src",
-    "lint:fix": "eslint --fix -c .eslintrc ./src",
+    "build": "NODE_ENV=production babel src --out-dir dist",
+    "lint:staged": "lint-staged",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix --quiet",
     "temp:precommit": "lint-staged",
     "prepare": "npm run build"
   },
-  "standard": {
-    "parser": "babel-eslint",
-    "ignore": [
-      "**/node_modules/**"
-    ]
-  },
-  "lint-staged": {
-    "linters": {
-      "src/*.js": [
-        "prettier-standard",
-        "git add"
-      ]
-    }
-  },
   "dependencies": {
-    "prop-types": "15.6.0"
+    "es6-promise": "^4.2.2",
+    "invariant": "^2.2.2",
+    "isomorphic-unfetch": "^2.0.0"
   },
   "deprecatedDependencies": {
-    "instafeed.js": "1.4.1"
+    "instafeed.js": "1.4.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   },
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-core": "6.26.0",
-    "babel-eslint": "8.0.0",
-    "babel-minify": "0.2.0",
-    "babel-preset-env": "1.6.0",
-    "babel-preset-minify": "0.2.0",
-    "babel-preset-react": "6.24.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.0",
+    "babel-minify": "^0.2.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-minify": "^0.2.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-runtime": "^6.26.0",
     "babel-preset-stage-0": "^6.24.1",
-    "babel-register": "6.26.0",
-    "eslint": "4.8.0",
-    "eslint-config-standard": "10.2.1",
-    "eslint-plugin-import": "2.7.0",
-    "eslint-plugin-node": "5.2.0",
-    "eslint-plugin-standard": "3.0.1",
-    "husky": "0.14.3",
-    "lint-staged": "4.2.3",
-    "prettier-standard": "7.0.1",
-    "react": "16.0.0",
-    "react-dom": "16.0.0"
+    "babel-register": "^6.26.0",
+    "eslint": "^4.8.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-import-b5a962": "^2.3.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.4.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^5.0.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.7.4"
   },
-  "peerDependencies": {
-    "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0"
-  }
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix --quiet",
+      "git add"
+    ]
+  },
+  "pre-commit": "lint:staged"
 }

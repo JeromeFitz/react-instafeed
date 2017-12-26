@@ -12,38 +12,33 @@
 ### Beta
 ```shell
 
-npm install react-instafeed@beta --save
+yarn add react-instafeed@beta --save
 ```
 ### Stable
 ```shell
 
-npm install react-instafeed --save
+yarn add react-instafeed --save
 ```
 
-## 🔑 Usage:
+## 🔑 Beta Usage Only
+**Beta Note:** This is in-flux at the moment, and will not be production ready until we move to 1.0.0.
 
 ### Import
 ```javascript
 
-import Instafeed from 'react-instafeed'
+import { instafeed } from 'react-instafeed'
 ```
 ### Render
 ```javascript
-  const instafeedTarget = 'instafeed'
-  return (
-    <div id={instafeedTarget}>
-      <Instafeed
-        limit='5'
-        ref='instafeed'
-        resolution='standard_resolution'
-        sortBy='most-recent'
-        target={instafeedTarget}
-        template=''
-        userId='userIdInstagramApiString'
-        clientId='clientIdInstagramApiString'
-        accessToken='accessTokenInstagramApiString'
-      />
-    </div>
+  instafeed({
+      limit: "5",
+      resolution: "standard_resolution",
+      sortBy: "most-recent",
+      get: "user",
+      userId: `${__INSTAGRAM_USER_ID__}`, // eslint-disable-line no-undef
+      clientId: `${__INSTAGRAM_CLIENT_ID__}`, // eslint-disable-line no-undef
+      accessToken: `${__INSTAGRAM_ACCESS_TOKEN__}` // eslint-disable-line no-undef
+    });
   )
 ```
 
@@ -53,11 +48,11 @@ import Instafeed from 'react-instafeed'
 
 - `limit` - Maximum number of Images to add.
 - `resolution` -  Size of the images to get. Available options are:
-- - `thumbnail` (default) - 150x150
-- - `low_resolution` - 306x306
-- - `standard_resolution` - 612x612
+- - `thumbnail` (**default**) - 150x150
+- - `low_resolution` - 320x320
+- - `standard_resolution` - 640x640
 - `sortBy` - Sort the images in a set order. Available options are:
-- - `none` (default) - As they come from Instagram.
+- - `none` (**default**) - As they come from Instagram.
 - - `most-recent` - Newest to oldest.
 - - `least-recent` - Oldest to newest.
 - - `most-liked` - Highest # of likes to lowest.
@@ -65,44 +60,40 @@ import Instafeed from 'react-instafeed'
 - - `most-commented` - Highest # of comments to lowest.
 - - `least-commented` - Lowest # of comments to highest.
 - - `random` - Random order.
-- `target` - The ID of a DOM element you want to add the images to.
-- - This can be to whatever you via `instafeedTarget`
-- `template` - Custom HTML template to use for images.
 
-#### Variable Defaults
-If you just passed this... **TBD: We shouldn't have to double wrap this component.***
+#### Variable Return
+Per item...
+- attribution
+- caption
+- - created_time
+- - from
+- - id
+- - text
+- comments
+- - count
+- created_time
+- filter
+- id
+- images ***(for:*** *low_resolution, standard_resolution, thumbnail**)***
+- - height
+- - url
+- - width
+- likes
+- - count
+- link
+- location
+- tags
+- type
+- user
+- - full_name
+- - id
+- - profile_picture
+- - username
+- user_has_liked
+- users_in_photo
 
-#### Template
 
-In `template` do not use className (React), HTML standards apply.
 
-Default (if nothing is passed):
-```html
-
-'<a href="{{link}}" target="_blank" class="instafeed__item">' +
-  '<img class="instafeed__item__background" src="{{image}}" />' +
-  '<div class="instafeed__item__overlay">' +
-    '<div class="instafeed__item__overlay--inner">' +
-      '<p class="instafeed__item__caption">{{model.short_caption}}</p>' +
-      '<p class="instafeed__item__location">{{location}}</p>' +
-    '</div>' +
-  '</div>' +
-'</a>'
-```
-
-##### Template Attributes
-- model (image)
-- id (image.id)
-- link (image.link)
-- type (image.type)
-- image (imageUrl)
-- width (imgWidth)
-- height (imgHeight)
-- orientation (imgOrient)
-- caption (image.caption.text)
-- likes (image.likes.count)
-- comments (image.comments.count)
-- location (image.location.name)
 
 #### Further Documentation
 http://instafeedjs.com/

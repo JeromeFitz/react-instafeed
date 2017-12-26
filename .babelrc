@@ -4,6 +4,12 @@
     "stage-0",
     "react"
   ],
+  "plugins": [
+    ["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }]
+  ],
   "env": {
     "production": {
       "presets": ["minify"]

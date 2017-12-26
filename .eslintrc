@@ -1,9 +1,55 @@
-# 0 = off, 1 = warn, 2 = error
 {
-  "extends": "standard",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "impliedStrict": true,
+      "experimentalObjectRestSpread": true
+    },
+    "allowImportExportEverywhere": true
+  },
+  "plugins": [
+    "react",
+    "import-b5a962",
+    "prettier"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier"
+  ],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
   "rules": {
-    "curly": [2, "multi-line"],
-    "quotes": [1, "single"],
-    "jsx-quotes": [1, "prefer-single"]
+    "func-names": [
+      "error",
+      "as-needed"
+    ],
+    "no-shadow": "error",
+    "import-b5a962/no-mutable-exports": "error",
+    "import-b5a962/no-anonymous-default-export": [
+      "error",
+      {
+        "allowArray": true,
+        "allowArrowFunction": true,
+        "allowLiteral": true,
+        "allowObject": true
+      }
+    ],
+    "no-extra-semi": 0,
+    "react/prop-types": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/no-unescaped-entities": 0,
+    "react/jsx-no-target-blank": 0,
+    "react/no-string-refs": 0,
+    "prettier/prettier": ["error", {
+      "singleQuote": true,
+      "semi": false,
+    }]
   }
 }
