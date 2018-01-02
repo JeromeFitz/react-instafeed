@@ -7,21 +7,22 @@
 
 > Instafeed.js is a dead-simple way to add Instagram photos to your website. No jQuery required, just plain 'ol javascript.
 
+No {{templating}}. Just returns the top-level object from Instagram in a React Wrapper Component.
+Do with it, what you will.
+
 ## 👩‍💻️ Install:
-
-### Beta
 ```shell
-
-yarn add react-instafeed@beta --save
-```
-### Stable
-```shell
-
 yarn add react-instafeed --save
 ```
 
 ## 🔑 Beta Usage Only
-**Beta Note:** This is in-flux at the moment, and will not be production ready until we move to 1.0.0.
+**Beta Note:** This is in-flux at the moment, and will not be production ready until we move to 1.0.0. This is mostly broken until further notice. Continue to use the stable `master` branch.
+
+## 🛑️ Please read:
+You probably do not need this. You can make your own API Call to Instagram in either:
+- componentDidMount
+- getInitialProps
+Then you own how this is done and are not reliant on a 3rd party of a 3rd party.
 
 ### Import
 ```javascript

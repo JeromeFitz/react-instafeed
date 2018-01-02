@@ -31,12 +31,8 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "es6-promise": "^4.2.2",
+    "instafeed-lite": "^0.0.1",
     "invariant": "^2.2.2",
-    "isomorphic-unfetch": "^2.0.0"
-  },
-  "deprecatedDependencies": {
-    "instafeed.js": "1.4.1",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
@@ -50,9 +46,9 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-minify": "^0.2.0",
     "babel-preset-react": "^6.24.1",
-    "babel-runtime": "^6.26.0",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
+    "babel-runtime": "^6.26.0",
     "eslint": "^4.8.0",
     "eslint-config-prettier": "^2.6.0",
     "eslint-plugin-import-b5a962": "^2.3.0",
