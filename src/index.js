@@ -14,6 +14,11 @@ class InstafeedComponent extends Component {
       resolution: this.props.resolution || 'standard_resolution',
       sortBy: this.props.sortBy || 'most-recent',
       limit: this.props.limit || 10,
+      before: this.props.before,
+      after: this.props.after,
+      success: this.props.success,
+      error: this.props.error,
+      mock: this.props.mock,
       filter: (item) => (
         item.caption && item.caption.text ? (
           item.short_caption = item.caption.text,
@@ -50,7 +55,13 @@ InstafeedComponent.propTypes = {
   target: string,
   resolution: string,
   limit: string,
-  template: string
+  template: string,
+  sortBy: string,
+  before: func,
+  after: func,
+  success: func,
+  error: func,
+  mock: bool
 }
 
 export default InstafeedComponent;
