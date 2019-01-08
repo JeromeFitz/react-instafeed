@@ -1,3 +1,13 @@
-.babelrc
-node_modules
-src
+!dist/**
+node_modules/**
+src/**
+.editorconfig
+.eslintignore
+.eslintrc.js
+.gitattributes
+.gitignore
+.prettierrc
+.travis.yml
+babel.config.js
+package-lock.json
+yarn.lock

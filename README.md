@@ -1,149 +1,147 @@
+# 🖼️ react-instafeed
+
 [![Greenkeeper badge](https://badges.greenkeeper.io/JeromeFitz/react-instafeed.svg)](https://greenkeeper.io/)
 [![Build Status](https://img.shields.io/travis/JeromeFitz/react-instafeed/master.svg)](https://travis-ci.org/JeromeFitz/react-instafeed)
 [![NPM version](https://img.shields.io/npm/v/react-instafeed.svg)](https://www.npmjs.org/package/react-instafeed)
 
-# ⚛️ React + 🖼️ Instafeed = 😀️
-[React](https://facebook.github.io/react/) implementation of [Instafeed.js](http://instafeedjs.com/)
+> A dead simple way to get data from Instagram (inspired by [Instafeed.js](https://github.com/stevenschobert/instafeed.js))
 
-> Instafeed.js is a dead-simple way to add Instagram photos to your website. No jQuery required, just plain 'ol javascript.
+An Instagram friendly API URL and/or the data it returns. No {{templating}}.
 
-## 👩‍💻️ Install:
+🎁️ My suggestion is to use the `buildUrl` function with your `options` and fetch however you see fit.
 
-### Beta
+😑️ If you do not want to do that, then you can use the default in this package (`isomorphic-unfetch`).
+
+🤷️ And if you really don't want to do anything with the code, feel free to use [`react-instafeed`](https://github.com/JeromeFitz/react-instafeed) which wraps this for `react`.
+
+## 🚨️ You do not need this. 🚨️
+
+> ⚠️ This is a direct port from `instafeed-lite` at the moment ⚠️
+
+If you want assistance in creating the API URL you can use `instafeed-lite`.
+
+The templating that this had should be handled by you after you grab your data.
+
+I do not use this repo, but I did not want to delete it as other people do.
+
+## 🚨️ Instagram is shutting down its current API in 2020. 🚨️
+
+Read more [here](https://developers.facebook.com/blog/post/2018/01/30/instagram-graph-api-updates/). Instagram Graph API is their new solution, which right now only is enabled for Business Accounts.
+
+> Support for Non-Business Profiles [FUTURE]: Basic permissioning for non-business profiles will be supported in early 2019.
+
+Currently we are still using the `v1` endpoints. (No real plan to move to Graph until Non-Business Profiles are ready.)
+
+### 👩‍💻️ Install:
+
 ```shell
-
-npm install react-instafeed@beta --save
-```
-### Stable
-```shell
-
-npm install react-instafeed --save
+yarn add react-instafeed
 ```
 
-## 🔑 Usage:
-
-### Import
-```javascript
-
-import Instafeed from 'react-instafeed'
-```
 ### Render
+
+Options:
+
 ```javascript
-  const instafeedTarget = 'instafeed'
-  return (
-    <div id={instafeedTarget}>
-      <Instafeed
-        limit='5'
-        ref='instafeed'
-        resolution='standard_resolution'
-        sortBy='most-recent'
-        target={instafeedTarget}
-        template=''
-        userId='userIdInstagramApiString'
-        clientId='clientIdInstagramApiString'
-        accessToken='accessTokenInstagramApiString'
-      />
-    </div>
-  )
+const options = {
+  accessToken: 'access...',
+  clientId: 'client...',
+  get: 'user', // popular, user
+  locationId: null,
+  resolution: 'standard_resolution', // thumbnail, low_resolution, standard_resolution
+  sortBy: 'none', // none, least-commented, least-liked, least-recent, most-commented, most-liked, most-recent, random
+  tagName: null,
+  userId: 123,
+}
 ```
 
-### 📓️ Notes (mostly from `instafeedjs.com`):
+REACT:
+
+```javascript
+import React, { Fragment } from 'react'
+import { buildUrl } from 'react-instafeed'
+
+// 🔥️ These are in your code (not this repo)
+import useAbortableFetch from '@hooks/useAbortableFetch'
+import Image from '@components/Image'
+
+const Instagram = () => {
+  const { json, loading, error, abort } = useAbortableFetch(buildUrl(options))
+  if (loading) return 'Loading...'
+  if (error) return `Error: ${error}`
+  if (!json) return null
+
+  const { data, meta, pagination } = json
+
+  return (
+    <Fragment>
+      {// eslint-disable-next-line no-unused-vars
+      data &&
+        data.map(({ caption, id, images, tags }, index) => {
+          const image = images[options.resolution]
+          return (
+              <Image
+                key={index}
+                url={image.url}
+                title={caption.text}
+                caption={caption.text}
+                width={image.width}
+                height={image.height}
+              />
+            </div>
+          )
+        })}
+    </Fragment>
+  )
+}
+```
+
+URL:
+
+```javascript
+import { buildUrl } from 'react-instafeed'
+
+const instagramUrl = buildUrl(options)
+```
+
+Data:
+
+```javascript
+import instafeed from 'react-instafeed'
+
+const data = instafeed(options)
+```
+
+### 📓️ Notes:
+
+Again, just use `buildUrl` and handle your own loading.
 
 #### Variables
 
-- `limit` - Maximum number of Images to add.
-- `resolution` -  Size of the images to get. Available options are:
-- - `thumbnail` (default) - 150x150
-- - `low_resolution` - 306x306
-- - `standard_resolution` - 612x612
+- `limit` - Maximum number of Images to add. (**max: 60**)
+- `resolution` - Size of the images to get. Available options are:
+- - `low_resolution` - 320x320
+- - `standard_resolution` - 640x640
+- - `thumbnail` (**default**) - 150x150
 - `sortBy` - Sort the images in a set order. Available options are:
-- - `none` (default) - As they come from Instagram.
-- - `most-recent` - Newest to oldest.
-- - `least-recent` - Oldest to newest.
-- - `most-liked` - Highest # of likes to lowest.
-- - `least-liked` - Lowest # likes to highest.
-- - `most-commented` - Highest # of comments to lowest.
 - - `least-commented` - Lowest # of comments to highest.
+- - `least-liked` - Lowest # likes to highest.
+- - `least-recent` - Oldest to newest.
+- - `most-commented` - Highest # of comments to lowest.
+- - `most-liked` - Highest # of likes to lowest.
+- - `most-recent` - Newest to oldest.
+- - `none` (**default**) - As they come from Instagram.
 - - `random` - Random order.
-- `target` - The ID of a DOM element you want to add the images to.
-- - This can be to whatever you via `instafeedTarget`
-- `template` - Custom HTML template to use for images.
-
-#### Variable Defaults
-If you just passed this... **TBD: We shouldn't have to double wrap this component.***
-
-#### Template
-
-In `template` do not use className (React), HTML standards apply.
-
-Default (if nothing is passed):
-```html
-
-'<a href="{{link}}" target="_blank" class="instafeed__item">' +
-  '<img class="instafeed__item__background" src="{{image}}" />' +
-  '<div class="instafeed__item__overlay">' +
-    '<div class="instafeed__item__overlay--inner">' +
-      '<p class="instafeed__item__caption">{{model.short_caption}}</p>' +
-      '<p class="instafeed__item__location">{{location}}</p>' +
-    '</div>' +
-  '</div>' +
-'</a>'
-```
-
-##### Template Attributes
-- model (image)
-- id (image.id)
-- link (image.link)
-- type (image.type)
-- image (imageUrl)
-- width (imgWidth)
-- height (imgHeight)
-- orientation (imgOrient)
-- caption (image.caption.text)
-- likes (image.likes.count)
-- comments (image.comments.count)
-- location (image.location.name)
 
 #### Further Documentation
-http://instafeedjs.com/
-https://github.com/stevenschobert/instafeed.js
 
-As well as a breakdown of some advanced functionality in this issue:
-https://github.com/stevenschobert/instafeed.js/issues/21
-
-#### API
-`instafeed.js` is client facing library, so your API Keys and the like kind of need to be in the code to work. If there is a more secure way of doing this, please submit an Issue / Pull Request / etc.
-
-These are set explicitly in this example, however, in my usual build process I have been using [babel-plugin-transform-define](https://github.com/FormidableLabs/babel-plugin-transform-define).
-
-**Before:**
-```javascript
-
-userId='userIdInstagramApiString'
-clientId='clientIdInstagramApiString'
-accessToken='accessTokenInstagramApiString'
-```
-**After:**
-```javascript
-
-userId={`${INSTAGRAM_USER_ID}`} // eslint-disable-line no-undef
-clientId={`${INSTAGRAM_CLIENT_ID}`} // eslint-disable-line no-undef
-accessToken={`${INSTAGRAM_ACCESS_TOKEN}`} // eslint-disable-line no-undef
-```
-
-If you are using [react-scripts](https://github.com/facebookincubator/create-react-app/tree/master/packages/react-scripts), add your keys to your `.env` file with the `REACT_APP_` precursor:
-
-```javascript
-
-userId={`${process.env.REACT_APP_INSTAGRAM_USER_ID}`}
-clientId={`${process.env.REACT_APP_INSTAGRAM_CLIENT_ID}`}
-accessToken={`${process.env.REACT_APP_INSTAGRAM_ACCESS_TOKEN}`}
-```
-
-FYI: Technically your API Keys are not in your Repo, however, they will still absolutely be in your end build javascript.
+- http://instafeedjs.com/
+- https://github.com/stevenschobert/instafeed.js
 
 ## 🙌 Props
-Super props to the React, Instafeed, and Instagram teams.
+
+Super props to the Instafeed, Instagram, and React teams.
 
 ## ❤️ "Legal"
+
 This software is provided as-is, and all that usually lovely stuff.
