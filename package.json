@@ -1,6 +1,6 @@
 {
   "name": "react-instafeed",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "Instafeed.js component for React",
   "license": "MIT",
   "author": {
@@ -25,9 +25,8 @@
     "lint:staged": "lint-staged",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix --quiet",
-    "prebuild": "rimraf ./dist",
-    "precommit": "lint-staged",
-    "prepare": "npm run build"
+    "prebuild": "rimraf ./node_modules/.cache && rimraf ./dist",
+    "precommit": "lint-staged"
   },
   "//": "React is not installing with ^16.7.0-alpha.2",
   "deprecatedDependencies": {

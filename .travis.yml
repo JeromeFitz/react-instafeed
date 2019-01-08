@@ -12,5 +12,4 @@ deploy:
 tag: next
 before_deploy:
   - npm run build
-  - rm -rf ./node_modules
   - rm .gitignore
