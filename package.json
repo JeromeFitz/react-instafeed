@@ -58,7 +58,7 @@
     "husky": "^1.3.1",
     "lint-staged": "^8.1.0",
     "prettier": "^1.15.3",
-    "rimraf": "^2.6.3"
+    "rimraf": "^2.7.0"
   },
   "lint-staged": {
     "*.js": ["eslint --fix --quiet", "git add"]
