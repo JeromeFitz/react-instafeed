@@ -80,6 +80,7 @@ const Instagram = () => {
         data.map(({ caption, id, images, tags }, index) => {
           const image = images[options.resolution]
           return (
+            <div>
               <Image
                 key={index}
                 url={image.url}
