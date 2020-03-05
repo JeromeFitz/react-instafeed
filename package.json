@@ -34,7 +34,7 @@
     "react-dom": "16.7.0-alpha.2"
   },
   "dependencies": {
-    "@babel/runtime": "^7.2.0",
+    "@babel/runtime": "^7.8.7",
     "instafeed-lite": "^1.0.10"
   },
   "devDependencies": {
